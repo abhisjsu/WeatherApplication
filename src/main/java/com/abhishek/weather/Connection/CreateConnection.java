@@ -12,7 +12,7 @@ public class CreateConnection {
 
 	private static final String GET_URL_CITY = "https://maps.googleapis.com/maps/api/geocode/json?&address=";	
 	
-	private static final String GET_URL_CLIMATE = "https://api.darksky.net/forecast/key/";
+	private static final String GET_URL_CLIMATE = "https://api.darksky.net/forecast/3377418f14c2f0f48746697eec3d4766/";
 	
 	public static String sendGetCityDetails(String city) throws IOException {
 		URL obj = new URL(GET_URL_CITY+city);
