@@ -80,22 +80,22 @@ public class CustomJsonParser {
 		return lng;
 	}
 	
-	public static void main(String argv[]) throws IOException, ParseException
-	{
-		
-		String cityResponse = CreateConnection.sendGetCityDetails("95014");
-		
-		CustomJsonParser.setCoordinates(cityResponse);
-		
-		String lat = CustomJsonParser.getLatitude();
-		String lng = CustomJsonParser.getLongitude();
-		
-		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
-		
-		System.out.println(CustomJsonParser.getCurrentClimateObject(cityClimate));
-		System.out.println(CustomJsonParser.getHourlyClimateObject(cityClimate));
-		System.out.println(CustomJsonParser.getDailyClimateObject(cityClimate));
-	}
+//	public static void main(String argv[]) throws IOException, ParseException
+//	{
+//		
+//		String cityResponse = CreateConnection.sendGetCityDetails("95014");
+//		
+//		CustomJsonParser.setCoordinates(cityResponse);
+//		
+//		String lat = CustomJsonParser.getLatitude();
+//		String lng = CustomJsonParser.getLongitude();
+//		
+//		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+//		
+//		System.out.println(CustomJsonParser.getCurrentClimateObject(cityClimate));
+//		System.out.println(CustomJsonParser.getHourlyClimateObject(cityClimate));
+//		System.out.println(CustomJsonParser.getDailyClimateObject(cityClimate));
+//	}
 
 
 }
