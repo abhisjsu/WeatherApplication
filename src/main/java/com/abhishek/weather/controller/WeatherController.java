@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import com.abhishek.weather.Connection.CreateConnection;
+
+import com.abhishek.weather.connection.CreateConnection;
 import com.abhishek.weather.coordinates.CustomJsonParser;
 
 @RestController

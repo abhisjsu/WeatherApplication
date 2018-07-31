@@ -1,4 +1,4 @@
-package com.abhishek.weather.Connection;
+package com.abhishek.weather.connection;
 
 import java.io.BufferedReader;
 import java.io.IOException;
