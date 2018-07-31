@@ -42,12 +42,32 @@ public class CustomJsonParser {
 		
 	}
 	
-	public static JSONObject getClimateObject(String jsonString) throws ParseException
+	public static JSONObject getCurrentClimateObject(String jsonString) throws ParseException
 	{
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(jsonString);
 		
 		json = (JSONObject)json.get("currently");
+		
+		return json;
+	}
+	
+	public static JSONObject getHourlyClimateObject(String jsonString) throws ParseException
+	{
+		JSONParser parser = new JSONParser();
+		JSONObject json = (JSONObject) parser.parse(jsonString);
+		
+		json = (JSONObject)json.get("hourly");
+		
+		return json;
+	}
+	
+	public static JSONObject getDailyClimateObject(String jsonString) throws ParseException
+	{
+		JSONParser parser = new JSONParser();
+		JSONObject json = (JSONObject) parser.parse(jsonString);
+		
+		json = (JSONObject)json.get("daily");
 		
 		return json;
 	}
@@ -72,7 +92,9 @@ public class CustomJsonParser {
 		
 		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
 		
-		System.out.println(CustomJsonParser.getClimateObject(cityClimate));
+		System.out.println(CustomJsonParser.getCurrentClimateObject(cityClimate));
+		System.out.println(CustomJsonParser.getHourlyClimateObject(cityClimate));
+		System.out.println(CustomJsonParser.getDailyClimateObject(cityClimate));
 	}
 
 

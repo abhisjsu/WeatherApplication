@@ -36,7 +36,7 @@ public class WeatherController {
 			
 			String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
 			
-			JSONObject currentClimate = CustomJsonParser.getClimateObject(cityClimate);
+			JSONObject currentClimate = CustomJsonParser.getCurrentClimateObject(cityClimate);
 			
 			
 			RestTemplate restTemplate = new RestTemplate();
@@ -71,7 +71,7 @@ public class WeatherController {
 		
 		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
 		
-		JSONObject currentClimate = CustomJsonParser.getClimateObject(cityClimate);
+		JSONObject currentClimate = CustomJsonParser.getCurrentClimateObject(cityClimate);
 		
 		
 		RestTemplate restTemplate = new RestTemplate();
