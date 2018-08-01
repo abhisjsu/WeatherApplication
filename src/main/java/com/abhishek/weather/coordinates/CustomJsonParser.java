@@ -8,8 +8,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import com.abhishek.weather.connection.CreateConnection;
-
 public class CustomJsonParser {
 
 	public  static String lat;
