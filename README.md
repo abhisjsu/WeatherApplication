@@ -11,6 +11,7 @@ It should support the following use cases:
 3. Lookup weather for next 5 or 7 days using city name or zip code
 
 
+*** REST END POINT on local host ***
 1. **By City Name**
 
 - 1.1 GET current Climate
@@ -22,7 +23,7 @@ It should support the following use cases:
 - 1.3 GET daily Climate
 - http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityName/daily?cityName=Cupertino
 
-2. By City PinCode
+2. **By City PinCode**
 
 - 2.1 GET current Climate
 - http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityCode/current?pincode=95110
