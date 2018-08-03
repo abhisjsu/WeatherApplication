@@ -15,21 +15,21 @@ It should support the following use cases:
 1. **By City Name**
 
 - 1.1 GET current Climate
-- http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityName/current?cityName=Cupertino
+- https://dashboard.heroku.com/apps/weather101abhi/weather-api/dashboard/getCurrentWeatherByCityName/current?cityName=Cupertino
 - 
 - 1.2 GET hourly Climate
-- http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityName/hourly?cityName=Cupertino
+- https://dashboard.heroku.com/apps/weather101abhi/weather-api/dashboard/getCurrentWeatherByCityName/hourly?cityName=Cupertino
 - 
 - 1.3 GET daily Climate
-- http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityName/daily?cityName=Cupertino
+- https://dashboard.heroku.com/apps/weather101abhi/weather-api/dashboard/getCurrentWeatherByCityName/daily?cityName=Cupertino
 
 2. **By City PinCode**
 
 - 2.1 GET current Climate
-- http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityCode/current?pincode=95110
+- https://dashboard.heroku.com/apps/weather101abhi/weather-api/dashboard/getCurrentWeatherByCityCode/current?pincode=95110
 - 
 - 2.2 GET hourly Climate
-- http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityCode/hourly?pincode=95110
+- https://dashboard.heroku.com/apps/weather101abhi/weather-api/dashboard/getCurrentWeatherByCityCode/hourly?pincode=95110
 - 
 - 2.3 GET daily Climate
-- http://localhost:8080/weather-api/dashboard/getCurrentWeatherByCityCode/daily?pincode=95110
+- https://dashboard.heroku.com/apps/weather101abhi/weather-api/dashboard/getCurrentWeatherByCityCode/daily?pincode=95110
