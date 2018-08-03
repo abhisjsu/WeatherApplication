@@ -46,8 +46,6 @@ public class WeatherController {
 			String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
 			
 			JSONObject currentClimate = CustomJsonParser.getCurrentClimateObject(cityClimate);
-		    
-		    Weather weather = this.weatherService.createWeatherObject(currentClimate, pincode);
 
 		    this.weatherService.validateInsertion(currentClimate, pincode);
 		    
@@ -85,9 +83,7 @@ public class WeatherController {
 			String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
 			
 			JSONObject currentClimate = CustomJsonParser.getHourlyClimateObject(cityClimate);
-			
-			
-			RestTemplate restTemplate = new RestTemplate();
+
 		    System.out.println("Pincode is "+pincode);
 		    System.out.println(currentClimate);
 		    
@@ -153,8 +149,6 @@ public class WeatherController {
 		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
 		
 		JSONObject currentClimate = CustomJsonParser.getCurrentClimateObject(cityClimate);
-		
-	    Weather weather = this.weatherService.createWeatherObject(currentClimate, cityName);
 
 	    this.weatherService.validateInsertion(currentClimate, cityName);
 	    
@@ -168,82 +162,71 @@ public class WeatherController {
 		return new ResponseEntity<>(new JSONObject().put("result", "Error "+e.toString()).toString(), HttpStatus.BAD_REQUEST);
 	}
 	}
-//	
-//	@RequestMapping(value = "/getCurrentWeatherByCityName/hourly", method = RequestMethod.GET)
-//	public ResponseEntity getHourlyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
-//		
-//	try {
-//		
-//		if(cityName == null) {
-//			throw new Exception();
-//		}
-//		    		
-//		String cityResponse = CreateConnection.sendGetCityDetails(cityName);
-//		
-//		CustomJsonParser.setCoordinates(cityResponse);
-//		
-//		String lat = CustomJsonParser.getLatitude();
-//		String lng = CustomJsonParser.getLongitude();
-//		
-//		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
-//		
-//		JSONObject currentClimate = CustomJsonParser.getHourlyClimateObject(cityClimate);
-//		
-//		
-//		RestTemplate restTemplate = new RestTemplate();
-//	    System.out.println("City Name is "+cityName);
-//	    System.out.println(currentClimate);
-//	    
-//	    //String weatherResult = restTemplate.getForObject(currentClimate.toString(), String.class);
-//	    
-//		return new ResponseEntity<>(currentClimate, HttpStatus.OK);
-//		
-//	} catch(Exception e) {
-//		e.printStackTrace();
-//		return new ResponseEntity<>(new JSONObject().put("result", "Error "+e.toString()).toString(), HttpStatus.BAD_REQUEST);
-//	}
-//	}
-//	
-//	@RequestMapping(value = "/getCurrentWeatherByCityName/daily", method = RequestMethod.GET)
-//	public ResponseEntity getDailyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
-//		
-//	try {
-//		
-//		if(cityName == null) {
-//			throw new Exception();
-//		}
-//		    		
-//		String cityResponse = CreateConnection.sendGetCityDetails(cityName);
-//		
-//		CustomJsonParser.setCoordinates(cityResponse);
-//		
-//		String lat = CustomJsonParser.getLatitude();
-//		String lng = CustomJsonParser.getLongitude();
-//		
-//		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
-//		
-//		JSONObject currentClimate = CustomJsonParser.getDailyClimateObject(cityClimate);
-//		
-//		
-//		RestTemplate restTemplate = new RestTemplate();
-//	    System.out.println("City Name is "+cityName);
-//	    System.out.println(currentClimate);
-//	    
-//	    //String weatherResult = restTemplate.getForObject(currentClimate.toString(), String.class);
-//	    
-//		return new ResponseEntity<>(currentClimate, HttpStatus.OK);
-//		
-//	} catch(Exception e) {
-//		e.printStackTrace();
-//		return new ResponseEntity<>(new JSONObject().put("result", "Error "+e.toString()).toString(), HttpStatus.BAD_REQUEST);
-//	}
-//	}
 	
+	@RequestMapping(value = "/getCurrentWeatherByCityName/hourly", method = RequestMethod.GET)
+	public ResponseEntity getHourlyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
+		
+	try {
+		
+		if(cityName == null) {
+			throw new Exception();
+		}
+		    		
+		String cityResponse = CreateConnection.sendGetCityDetails(cityName);
+		
+		CustomJsonParser.setCoordinates(cityResponse);
+		
+		String lat = CustomJsonParser.getLatitude();
+		String lng = CustomJsonParser.getLongitude();
+		
+		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+		
+		JSONObject currentClimate = CustomJsonParser.getHourlyClimateObject(cityClimate);
+
+	    System.out.println("City Name is "+cityName);
+	    System.out.println(currentClimate);
+	    
+	    //String weatherResult = restTemplate.getForObject(currentClimate.toString(), String.class);
+	    
+		return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		
+	} catch(Exception e) {
+		e.printStackTrace();
+		return new ResponseEntity<>(new JSONObject().put("result", "Error "+e.toString()).toString(), HttpStatus.BAD_REQUEST);
+	}
+	}
 	
-//	public static void main(String argv[])
-//	{
-//		String weather = "{\"results\":[{\"address_components\":[{\"long_name\":\"95110\",\"short_name\":\"95110\",\"types\":[\"postal_code\"]},{\"long_name\":\"San Jose\",\"short_name\":\"San Jose\",\"types\":[\"locality\",\"political\"]},{\"long_name\":\"Santa Clara County\",\"short_name\":\"Santa Clara County\",\"types\":[\"administrative_area_level_2\",\"political\"]},{\"long_name\":\"California\",\"short_name\":\"CA\",\"types\":[\"administrative_area_level_1\",\"political\"]},{\"long_name\":\"United States\",\"short_name\":\"US\",\"types\":[\"country\",\"political\"]}],\"formatted_address\":\"San Jose, CA 95110, USA\",\"geometry\":{\"bounds\":{\"northeast\":{\"lat\":37.3749269,\"lng\":-121.870558},\"southwest\":{\"lat\":37.307479,\"lng\":-121.9368571}},\"location\":{\"lat\":37.354611,\"lng\":-121.918866},\"location_type\":\"APPROXIMATE\",\"viewport\":{\"northeast\":{\"lat\":37.3749269,\"lng\":-121.870558},\"southwest\":{\"lat\":37.307479,\"lng\":-121.9368571}}},\"place_id\":\"ChIJ31SYUmLLj4AR4o5iJ_upyvk\",\"types\":[\"postal_code\"]}],\"status\":\"OK\"}";
-//		WeatherController wc = new WeatherController();
-//		wc.get
-//	}
+	@RequestMapping(value = "/getCurrentWeatherByCityName/daily", method = RequestMethod.GET)
+	public ResponseEntity getDailyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
+		
+	try {
+		
+		if(cityName == null) {
+			throw new Exception();
+		}
+		    		
+		String cityResponse = CreateConnection.sendGetCityDetails(cityName);
+		
+		CustomJsonParser.setCoordinates(cityResponse);
+		
+		String lat = CustomJsonParser.getLatitude();
+		String lng = CustomJsonParser.getLongitude();
+		
+		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+		
+		JSONObject currentClimate = CustomJsonParser.getDailyClimateObject(cityClimate);
+		
+	    System.out.println("City Name is "+cityName);
+	    System.out.println(currentClimate);
+	    
+	    //String weatherResult = restTemplate.getForObject(currentClimate.toString(), String.class);
+	    
+		return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		
+	} catch(Exception e) {
+		e.printStackTrace();
+		return new ResponseEntity<>(new JSONObject().put("result", "Error "+e.toString()).toString(), HttpStatus.BAD_REQUEST);
+	}
+	}
+	
 }
