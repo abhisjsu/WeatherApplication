@@ -1,8 +1,6 @@
 package com.abhishek.weather.coordinates;
 
 
-import java.io.IOException;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
