@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.ui.ModelMap;
 
 import com.abhishek.weather.connection.CityDetailService;
 import com.abhishek.weather.coordinates.CustomJsonParser;
@@ -30,7 +29,7 @@ public class WeatherController {
 	CustomJsonParser jsonParser;
 
 	@GetMapping(value = "/getCurrentWeatherByCityCode/current")
-	public JSONObject getCurrentWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode,ModelMap model) throws JSONException{
+	public JSONObject getCurrentWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode) throws JSONException{
 		
 		try {
 			
