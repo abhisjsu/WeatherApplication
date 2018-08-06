@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ public class WeatherController {
 	@Autowired
 	CustomJsonParser jsonParser;
 
-	@RequestMapping(value = "/getCurrentWeatherByCityCode/current")
+	@GetMapping(value = "/getCurrentWeatherByCityCode/current")
 	public JSONObject getCurrentWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode,ModelMap model) throws JSONException{
 		
 		try {
@@ -75,7 +76,7 @@ public class WeatherController {
 		}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityCode/hourly")
+	@GetMapping(value = "/getCurrentWeatherByCityCode/hourly")
 	public ResponseEntity getHourlyWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode) throws JSONException{
 		
 		try {
@@ -116,7 +117,7 @@ public class WeatherController {
 		}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityCode/daily")
+	@GetMapping(value = "/getCurrentWeatherByCityCode/daily")
 	public ResponseEntity getDailyWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode) throws JSONException{
 		
 		try {
@@ -159,7 +160,7 @@ public class WeatherController {
 		}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityName/current")
+	@GetMapping(value = "/getCurrentWeatherByCityName/current")
 	public ResponseEntity getCurrentWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
 		
 	try {
@@ -203,7 +204,7 @@ public class WeatherController {
 	}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityName/hourly")
+	@GetMapping(value = "/getCurrentWeatherByCityName/hourly")
 	public ResponseEntity getHourlyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
 		
 	try {
@@ -245,7 +246,7 @@ public class WeatherController {
 	}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityName/daily")
+	@GetMapping(value = "/getCurrentWeatherByCityName/daily")
 	public ResponseEntity getDailyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
 		
 	try {
