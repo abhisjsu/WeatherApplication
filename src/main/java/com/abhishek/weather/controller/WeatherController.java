@@ -7,16 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
 import org.springframework.ui.ModelMap;
 
-import com.abhishek.weather.connection.CreateConnection;
+import com.abhishek.weather.connection.CityDetailService;
 import com.abhishek.weather.coordinates.CustomJsonParser;
-import com.abhishek.weather.model.Weather;
 import com.abhishek.weather.service.WeatherService;
 
 @RestController
@@ -25,9 +21,14 @@ public class WeatherController {
 	
 	@Autowired
 	WeatherService weatherService;
-
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityCode/current", method = RequestMethod.GET)
+	@Autowired
+	CityDetailService cityService;
+	
+	@Autowired
+	CustomJsonParser jsonParser;
+
+	@RequestMapping(value = "/getCurrentWeatherByCityCode/current")
 	public JSONObject getCurrentWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode,ModelMap model) throws JSONException{
 		
 		try {
@@ -36,16 +37,16 @@ public class WeatherController {
 				throw new Exception();
 			}
 			    		
-			String cityResponse = CreateConnection.sendGetCityDetails(pincode);
+			String cityResponse = cityService.sendGetCityDetails(pincode);
 			
-			CustomJsonParser.setCoordinates(cityResponse);
+			jsonParser.setCoordinates(cityResponse);
 			
-			String lat = CustomJsonParser.getLatitude();
-			String lng = CustomJsonParser.getLongitude();
+			String lat = jsonParser.getLatitude();
+			String lng = jsonParser.getLongitude();
 			
-			String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+			String cityClimate = cityService.sendGetCityClimate(lat,lng);
 			
-			JSONObject currentClimate = CustomJsonParser.getCurrentClimateObject(cityClimate);
+			JSONObject currentClimate = jsonParser.getCurrentClimateObject(cityClimate);
 
 		    this.weatherService.validateInsertion(currentClimate, pincode);
 		    
@@ -64,7 +65,7 @@ public class WeatherController {
 		}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityCode/hourly", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCurrentWeatherByCityCode/hourly")
 	public ResponseEntity getHourlyWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode) throws JSONException{
 		
 		try {
@@ -73,16 +74,16 @@ public class WeatherController {
 				throw new Exception();
 			}
 			    		
-			String cityResponse = CreateConnection.sendGetCityDetails(pincode);
+			String cityResponse = cityService.sendGetCityDetails(pincode);
 			
-			CustomJsonParser.setCoordinates(cityResponse);
+			jsonParser.setCoordinates(cityResponse);
 			
-			String lat = CustomJsonParser.getLatitude();
-			String lng = CustomJsonParser.getLongitude();
+			String lat = jsonParser.getLatitude();
+			String lng = jsonParser.getLongitude();
 			
-			String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+			String cityClimate = cityService.sendGetCityClimate(lat,lng);
 			
-			JSONObject currentClimate = CustomJsonParser.getHourlyClimateObject(cityClimate);
+			JSONObject currentClimate = jsonParser.getHourlyClimateObject(cityClimate);
 
 		    System.out.println("Pincode is "+pincode);
 		    System.out.println(currentClimate);
@@ -97,7 +98,7 @@ public class WeatherController {
 		}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityCode/daily", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCurrentWeatherByCityCode/daily")
 	public ResponseEntity getDailyWeatherByCityCode(@RequestParam(value="pincode",required=false) String pincode) throws JSONException{
 		
 		try {
@@ -106,19 +107,19 @@ public class WeatherController {
 				throw new Exception();
 			}
 			    		
-			String cityResponse = CreateConnection.sendGetCityDetails(pincode);
+			String cityResponse = cityService.sendGetCityDetails(pincode);
 			
-			CustomJsonParser.setCoordinates(cityResponse);
+			jsonParser.setCoordinates(cityResponse);
 			
-			String lat = CustomJsonParser.getLatitude();
-			String lng = CustomJsonParser.getLongitude();
+			String lat = jsonParser.getLatitude();
+			String lng = jsonParser.getLongitude();
 			
-			String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+			String cityClimate = cityService.sendGetCityClimate(lat,lng);
 			
-			JSONObject currentClimate = CustomJsonParser.getDailyClimateObject(cityClimate);
+			JSONObject currentClimate = jsonParser.getDailyClimateObject(cityClimate);
 			
 			
-			RestTemplate restTemplate = new RestTemplate();
+			
 		    System.out.println("Pincode is "+pincode);
 		    System.out.println(currentClimate);
 
@@ -130,7 +131,7 @@ public class WeatherController {
 		}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityName/current", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCurrentWeatherByCityName/current")
 	public ResponseEntity getCurrentWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
 		
 	try {
@@ -139,16 +140,16 @@ public class WeatherController {
 			throw new Exception();
 		}
 		    		
-		String cityResponse = CreateConnection.sendGetCityDetails(cityName);
+		String cityResponse = cityService.sendGetCityDetails(cityName);
 		
-		CustomJsonParser.setCoordinates(cityResponse);
+		jsonParser.setCoordinates(cityResponse);
 		
-		String lat = CustomJsonParser.getLatitude();
-		String lng = CustomJsonParser.getLongitude();
+		String lat = jsonParser.getLatitude();
+		String lng = jsonParser.getLongitude();
 		
-		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+		String cityClimate = cityService.sendGetCityClimate(lat,lng);
 		
-		JSONObject currentClimate = CustomJsonParser.getCurrentClimateObject(cityClimate);
+		JSONObject currentClimate = jsonParser.getCurrentClimateObject(cityClimate);
 
 	    this.weatherService.validateInsertion(currentClimate, cityName);
 	    
@@ -163,7 +164,7 @@ public class WeatherController {
 	}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityName/hourly", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCurrentWeatherByCityName/hourly")
 	public ResponseEntity getHourlyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
 		
 	try {
@@ -172,16 +173,16 @@ public class WeatherController {
 			throw new Exception();
 		}
 		    		
-		String cityResponse = CreateConnection.sendGetCityDetails(cityName);
+		String cityResponse = cityService.sendGetCityDetails(cityName);
 		
-		CustomJsonParser.setCoordinates(cityResponse);
+		jsonParser.setCoordinates(cityResponse);
 		
-		String lat = CustomJsonParser.getLatitude();
-		String lng = CustomJsonParser.getLongitude();
+		String lat = jsonParser.getLatitude();
+		String lng = jsonParser.getLongitude();
 		
-		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+		String cityClimate = cityService.sendGetCityClimate(lat,lng);
 		
-		JSONObject currentClimate = CustomJsonParser.getHourlyClimateObject(cityClimate);
+		JSONObject currentClimate = jsonParser.getHourlyClimateObject(cityClimate);
 
 	    System.out.println("City Name is "+cityName);
 	    System.out.println(currentClimate);
@@ -196,7 +197,7 @@ public class WeatherController {
 	}
 	}
 	
-	@RequestMapping(value = "/getCurrentWeatherByCityName/daily", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCurrentWeatherByCityName/daily")
 	public ResponseEntity getDailyWeatherByCityName(@RequestParam(value="cityName",required=false) String cityName) throws JSONException{
 		
 	try {
@@ -205,16 +206,16 @@ public class WeatherController {
 			throw new Exception();
 		}
 		    		
-		String cityResponse = CreateConnection.sendGetCityDetails(cityName);
+		String cityResponse = cityService.sendGetCityDetails(cityName);
 		
-		CustomJsonParser.setCoordinates(cityResponse);
+		jsonParser.setCoordinates(cityResponse);
 		
-		String lat = CustomJsonParser.getLatitude();
-		String lng = CustomJsonParser.getLongitude();
+		String lat = jsonParser.getLatitude();
+		String lng = jsonParser.getLongitude();
 		
-		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
+		String cityClimate = cityService.sendGetCityClimate(lat,lng);
 		
-		JSONObject currentClimate = CustomJsonParser.getDailyClimateObject(cityClimate);
+		JSONObject currentClimate = jsonParser.getDailyClimateObject(cityClimate);
 		
 	    System.out.println("City Name is "+cityName);
 	    System.out.println(currentClimate);

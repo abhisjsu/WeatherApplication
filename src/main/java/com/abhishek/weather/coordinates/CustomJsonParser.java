@@ -5,14 +5,16 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomJsonParser {
 
-	public  static String lat;
+	public String lat;
 	
-	public static String lng;
+	public String lng;
 	
-	public static void setCoordinates(String jsonString) throws ParseException
+	public void setCoordinates(String jsonString) throws ParseException
 	{
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(jsonString);
@@ -38,7 +40,7 @@ public class CustomJsonParser {
 		
 	}
 	
-	public static JSONObject getCurrentClimateObject(String jsonString) throws ParseException
+	public JSONObject getCurrentClimateObject(String jsonString) throws ParseException
 	{
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(jsonString);
@@ -48,7 +50,7 @@ public class CustomJsonParser {
 		return json;
 	}
 	
-	public static JSONObject getHourlyClimateObject(String jsonString) throws ParseException
+	public JSONObject getHourlyClimateObject(String jsonString) throws ParseException
 	{
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(jsonString);
@@ -58,7 +60,7 @@ public class CustomJsonParser {
 		return json;
 	}
 	
-	public static JSONObject getDailyClimateObject(String jsonString) throws ParseException
+	public JSONObject getDailyClimateObject(String jsonString) throws ParseException
 	{
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(jsonString);
@@ -68,30 +70,13 @@ public class CustomJsonParser {
 		return json;
 	}
 	
-	public static String getLatitude() {
+	public String getLatitude() {
 		return lat;
 	}
 
-	public static String getLongitude() {
+	public String getLongitude() {
 		return lng;
 	}
 	
-//	public static void main(String argv[]) throws IOException, ParseException
-//	{
-//		
-//		String cityResponse = CreateConnection.sendGetCityDetails("95014");
-//		
-//		CustomJsonParser.setCoordinates(cityResponse);
-//		
-//		String lat = CustomJsonParser.getLatitude();
-//		String lng = CustomJsonParser.getLongitude();
-//		
-//		String cityClimate = CreateConnection.sendGetCityClimate(lat,lng);
-//		
-//		System.out.println(CustomJsonParser.getCurrentClimateObject(cityClimate));
-//		System.out.println(CustomJsonParser.getHourlyClimateObject(cityClimate));
-//		System.out.println(CustomJsonParser.getDailyClimateObject(cityClimate));
-//	}
-
 
 }

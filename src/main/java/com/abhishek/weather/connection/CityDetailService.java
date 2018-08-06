@@ -6,7 +6,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class CreateConnection {
+import org.springframework.stereotype.Service;
+
+@Service
+public class CityDetailService {
 	
 	private static final String USER_AGENT = "Mozilla/5.0";
 
@@ -14,7 +17,7 @@ public class CreateConnection {
 	
 	private static final String GET_URL_CLIMATE = "https://api.darksky.net/forecast/3377418f14c2f0f48746697eec3d4766/";
 	
-	public static String sendGetCityDetails(String city) throws IOException {
+	public String sendGetCityDetails(String city) throws IOException {
 		URL obj = new URL(GET_URL_CITY+city);
 		
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -45,7 +48,7 @@ public class CreateConnection {
 
 	}
 	
-	public static String sendGetCityClimate(String lat,String lng) throws IOException {
+	public String sendGetCityClimate(String lat,String lng) throws IOException {
 		URL obj = new URL(GET_URL_CLIMATE+lat+","+lng);
 		
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -76,11 +79,5 @@ public class CreateConnection {
 
 	}
 
-//	public static void main(String argv[]) throws IOException
-//	{
-//		String output = CreateConnection.sendGET("95110");
-//		System.out.println(output);
-//	}
-	
 
 }
