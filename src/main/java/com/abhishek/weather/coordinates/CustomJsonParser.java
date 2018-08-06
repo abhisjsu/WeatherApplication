@@ -14,7 +14,7 @@ public class CustomJsonParser {
 	
 	public String lng;
 	
-	public void setCoordinates(String jsonString) throws ParseException
+	public boolean setCoordinates(String jsonString) throws ParseException
 	{
 		JSONParser parser = new JSONParser();
 		JSONObject json = (JSONObject) parser.parse(jsonString);
@@ -31,11 +31,13 @@ public class CustomJsonParser {
 			
 			lat = (String)obj2.get("lat").toString();
 			lng = (String)obj2.get("lng").toString();
+			
+			return true;
 		}
 		else
 		{
 			System.out.println("City not Found");
-			System.exit(0);
+			return false;
 		}
 		
 	}

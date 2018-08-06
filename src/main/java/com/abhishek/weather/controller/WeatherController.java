@@ -39,22 +39,32 @@ public class WeatherController {
 			    		
 			String cityResponse = cityService.sendGetCityDetails(pincode);
 			
-			jsonParser.setCoordinates(cityResponse);
+			boolean flag = jsonParser.setCoordinates(cityResponse);
 			
-			String lat = jsonParser.getLatitude();
-			String lng = jsonParser.getLongitude();
-			
-			String cityClimate = cityService.sendGetCityClimate(lat,lng);
-			
-			JSONObject currentClimate = jsonParser.getCurrentClimateObject(cityClimate);
+			if(flag == true)
+			{
+				String lat = jsonParser.getLatitude();
+				String lng = jsonParser.getLongitude();
+				
+				String cityClimate = cityService.sendGetCityClimate(lat,lng);
+				
+				JSONObject currentClimate = jsonParser.getCurrentClimateObject(cityClimate);
 
-		    this.weatherService.validateInsertion(currentClimate, pincode);
-		    
-		    System.out.println("Obtained from Database for city : "+pincode);
-		    System.out.println(this.weatherService.getObjectByCityInfo(pincode));
-		 
-		    
-		    return currentClimate;
+			    this.weatherService.validateInsertion(currentClimate, pincode);
+			    
+			    System.out.println("Obtained from Database for city : "+pincode);
+			    System.out.println(this.weatherService.getObjectByCityInfo(pincode));
+			 
+			    
+			    return currentClimate;
+			}
+			else
+			{
+				JSONObject notFound = new JSONObject();
+				notFound.put("Not Found", "Input City Not Found");
+				return notFound;
+			}
+
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -76,19 +86,29 @@ public class WeatherController {
 			    		
 			String cityResponse = cityService.sendGetCityDetails(pincode);
 			
-			jsonParser.setCoordinates(cityResponse);
+			boolean flag = jsonParser.setCoordinates(cityResponse);
 			
-			String lat = jsonParser.getLatitude();
-			String lng = jsonParser.getLongitude();
-			
-			String cityClimate = cityService.sendGetCityClimate(lat,lng);
-			
-			JSONObject currentClimate = jsonParser.getHourlyClimateObject(cityClimate);
+			if(flag == true)
+			{
+				String lat = jsonParser.getLatitude();
+				String lng = jsonParser.getLongitude();
+				
+				String cityClimate = cityService.sendGetCityClimate(lat,lng);
+				
+				JSONObject currentClimate = jsonParser.getHourlyClimateObject(cityClimate);
 
-		    System.out.println("Pincode is "+pincode);
-		    System.out.println(currentClimate);
-		    
-			return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+			    System.out.println("Pincode is "+pincode);
+			    System.out.println(currentClimate);
+			    
+				return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+			}
+			else
+			{
+				JSONObject notFound = new JSONObject();
+				notFound.put("Not Found", "Input City Not Found");
+				return new ResponseEntity<>(notFound, HttpStatus.OK);
+			}
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -107,21 +127,31 @@ public class WeatherController {
 			    		
 			String cityResponse = cityService.sendGetCityDetails(pincode);
 			
-			jsonParser.setCoordinates(cityResponse);
+			boolean flag = jsonParser.setCoordinates(cityResponse);
 			
-			String lat = jsonParser.getLatitude();
-			String lng = jsonParser.getLongitude();
-			
-			String cityClimate = cityService.sendGetCityClimate(lat,lng);
-			
-			JSONObject currentClimate = jsonParser.getDailyClimateObject(cityClimate);
-			
-			
-			
-		    System.out.println("Pincode is "+pincode);
-		    System.out.println(currentClimate);
+			if(flag == true)
+			{
+				String lat = jsonParser.getLatitude();
+				String lng = jsonParser.getLongitude();
+				
+				String cityClimate = cityService.sendGetCityClimate(lat,lng);
+				
+				JSONObject currentClimate = jsonParser.getDailyClimateObject(cityClimate);
+				
+				
+				
+			    System.out.println("Pincode is "+pincode);
+			    System.out.println(currentClimate);
 
-			return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+				return new ResponseEntity<>(currentClimate, HttpStatus.OK);				
+			}
+			else
+			{
+				JSONObject notFound = new JSONObject();
+				notFound.put("Not Found", "Input City Not Found");
+				return new ResponseEntity<>(notFound, HttpStatus.OK);
+			}
+
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -140,21 +170,32 @@ public class WeatherController {
 		    		
 		String cityResponse = cityService.sendGetCityDetails(cityName);
 		
-		jsonParser.setCoordinates(cityResponse);
+		boolean flag = jsonParser.setCoordinates(cityResponse);
 		
-		String lat = jsonParser.getLatitude();
-		String lng = jsonParser.getLongitude();
-		
-		String cityClimate = cityService.sendGetCityClimate(lat,lng);
-		
-		JSONObject currentClimate = jsonParser.getCurrentClimateObject(cityClimate);
+		if(flag ==true)
+		{
+			
+			String lat = jsonParser.getLatitude();
+			String lng = jsonParser.getLongitude();
+			
+			String cityClimate = cityService.sendGetCityClimate(lat,lng);
+			
+			JSONObject currentClimate = jsonParser.getCurrentClimateObject(cityClimate);
 
-	    this.weatherService.validateInsertion(currentClimate, cityName);
-	    
-	    System.out.println("City Name is "+cityName);
-	    System.out.println(currentClimate);
-	    
-		return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		    this.weatherService.validateInsertion(currentClimate, cityName);
+		    
+		    System.out.println("City Name is "+cityName);
+		    System.out.println(currentClimate);
+		    
+			return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		}
+		else
+		{
+			JSONObject notFound = new JSONObject();
+			notFound.put("Not Found", "Input City Not Found");
+			return new ResponseEntity<>(notFound, HttpStatus.OK);
+		}
+
 		
 	} catch(Exception e) {
 		e.printStackTrace();
@@ -173,19 +214,30 @@ public class WeatherController {
 		    		
 		String cityResponse = cityService.sendGetCityDetails(cityName);
 		
-		jsonParser.setCoordinates(cityResponse);
+		boolean flag = jsonParser.setCoordinates(cityResponse);
 		
-		String lat = jsonParser.getLatitude();
-		String lng = jsonParser.getLongitude();
-		
-		String cityClimate = cityService.sendGetCityClimate(lat,lng);
-		
-		JSONObject currentClimate = jsonParser.getHourlyClimateObject(cityClimate);
+		if(flag ==true)
+		{
+			String lat = jsonParser.getLatitude();
+			String lng = jsonParser.getLongitude();
+			
+			String cityClimate = cityService.sendGetCityClimate(lat,lng);
+			
+			JSONObject currentClimate = jsonParser.getHourlyClimateObject(cityClimate);
 
-	    System.out.println("City Name is "+cityName);
-	    System.out.println(currentClimate);
-	    
-		return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		    System.out.println("City Name is "+cityName);
+		    System.out.println(currentClimate);
+		    
+			return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		}
+		else
+		{
+			JSONObject notFound = new JSONObject();
+			notFound.put("Not Found", "Input City Not Found");
+			return new ResponseEntity<>(notFound, HttpStatus.OK);
+		}
+		
+
 		
 	} catch(Exception e) {
 		e.printStackTrace();
@@ -204,19 +256,29 @@ public class WeatherController {
 		    		
 		String cityResponse = cityService.sendGetCityDetails(cityName);
 		
-		jsonParser.setCoordinates(cityResponse);
+		boolean flag = jsonParser.setCoordinates(cityResponse);
 		
-		String lat = jsonParser.getLatitude();
-		String lng = jsonParser.getLongitude();
-		
-		String cityClimate = cityService.sendGetCityClimate(lat,lng);
-		
-		JSONObject currentClimate = jsonParser.getDailyClimateObject(cityClimate);
-		
-	    System.out.println("City Name is "+cityName);
-	    System.out.println(currentClimate);
-	    
-		return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		if(flag ==true)
+		{
+			String lat = jsonParser.getLatitude();
+			String lng = jsonParser.getLongitude();
+			
+			String cityClimate = cityService.sendGetCityClimate(lat,lng);
+			
+			JSONObject currentClimate = jsonParser.getDailyClimateObject(cityClimate);
+			
+		    System.out.println("City Name is "+cityName);
+		    System.out.println(currentClimate);
+		    
+			return new ResponseEntity<>(currentClimate, HttpStatus.OK);
+		}
+		else
+		{
+			JSONObject notFound = new JSONObject();
+			notFound.put("Not Found", "Input City Not Found");
+			return new ResponseEntity<>(notFound, HttpStatus.OK);
+		}
+
 		
 	} catch(Exception e) {
 		e.printStackTrace();
