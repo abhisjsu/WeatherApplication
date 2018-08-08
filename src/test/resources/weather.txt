@@ -1,0 +1,20 @@
+{
+  "summary": "Humid and Mostly Cloudy",
+  "precipProbability": 0.02,
+  "visibility": 10,
+  "windGust": 7.86,
+  "precipIntensity": 0.0006,
+  "icon": "partly-cloudy-night",
+  "cloudCover": 0.91,
+  "windBearing": 87,
+  "apparentTemperature": 77.85,
+  "pressure": 1001.25,
+  "dewPoint": 73.58,
+  "ozone": 277.1,
+  "precipType": "rain",
+  "temperature": 76.23,
+  "humidity": 0.92,
+  "time": 1533685615,
+  "windSpeed": 4.1,
+  "uvIndex": 0
+}

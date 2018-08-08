@@ -1,0 +1,59 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Patiala",
+               "short_name" : "Patiala",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Patiala",
+               "short_name" : "Patiala",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Punjab",
+               "short_name" : "PB",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "India",
+               "short_name" : "IN",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Patiala, Punjab, India",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 30.4222337,
+                  "lng" : 76.4907647
+               },
+               "southwest" : {
+                  "lat" : 30.2710766,
+                  "lng" : 76.327343
+               }
+            },
+            "location" : {
+               "lat" : 30.3397809,
+               "lng" : 76.38687969999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 30.4222337,
+                  "lng" : 76.4907647
+               },
+               "southwest" : {
+                  "lat" : 30.2710766,
+                  "lng" : 76.327343
+               }
+            }
+         },
+         "place_id" : "ChIJ3xMzWpMoEDkRf7yQO61WvNU",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
