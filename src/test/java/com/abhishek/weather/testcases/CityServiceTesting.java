@@ -19,7 +19,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
 
-import com.abhishek.weather.CityTest.GetCityDetailsServiceStubImpl;
 import com.abhishek.weather.connection.CityDetailService;
 import com.abhishek.weather.controller.WeatherController;
 import com.abhishek.weather.coordinates.CustomJsonParser;
@@ -40,8 +39,6 @@ public class CityServiceTesting {
 	
 	@InjectMocks
 	WeatherController controller;
-	
-	GetCityDetailsServiceStubImpl testing = new GetCityDetailsServiceStubImpl();
 
 	@Test
 	public void testIntegrationOne() throws IOException, ParseException, JSONException {

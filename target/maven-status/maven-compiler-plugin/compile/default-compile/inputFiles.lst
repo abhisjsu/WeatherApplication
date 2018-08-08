@@ -1,9 +1,10 @@
+/Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/config/SwaggerConfig.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/service/WeatherService.java
+/Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/connection/CityDetailService.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/WeatherApiApplication.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/controller/WeatherController.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/service/WeatherServiceImpl.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/repository/WeatherRepository.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/coordinates/CustomJsonParser.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/model/Weather.java
-/Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/connection/CreateConnection.java
 /Users/abhishekchaudhary/Summer/WeatherApplication/src/main/java/com/abhishek/weather/controller/WelcomeController.java

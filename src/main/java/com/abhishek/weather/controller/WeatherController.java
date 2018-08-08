@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.abhishek.weather.connection.CityDetailService;
 import com.abhishek.weather.coordinates.CustomJsonParser;
 import com.abhishek.weather.service.WeatherService;
+import com.abhishek.weather.service.WeatherServiceImpl;
 
 @RestController
 @RequestMapping("/dashboard")
 public class WeatherController {
 	
 	@Autowired
-	WeatherService weatherService;
+	WeatherServiceImpl weatherService;
 	
 	@Autowired
 	CityDetailService cityService;
