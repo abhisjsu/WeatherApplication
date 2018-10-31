@@ -12,6 +12,8 @@ It should support the following use cases:
 
 **These REST endpoints have dependence on on google maps api which often becomes dysfunctional**
 **That Exception caser has been handled case a case of "Input City Not Found"**
+
+
 *** REST END POINT on local host ***
 1. **By City Name**
 
