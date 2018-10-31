@@ -14,7 +14,7 @@ It should support the following use cases:
 **That Exception caser has been handled case a case of "Input City Not Found"**
 
 
-*** REST END POINT on local host ***
+*** REST END POINT Deployed on Heroku Cloud ***
 1. **By City Name**
 
 - 1.1 GET current Climate
