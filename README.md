@@ -11,7 +11,7 @@ It should support the following use cases:
 3. Lookup weather for next 5 or 7 days using city name or zip code
 
 **These REST endpoints have dependence on on google maps api which often becomes dysfunctional**
-** That Exception caser has been handled case a case of "Input City Not Found"**
+**That Exception caser has been handled case a case of "Input City Not Found"**
 *** REST END POINT on local host ***
 1. **By City Name**
 
